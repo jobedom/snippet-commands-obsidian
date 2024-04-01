@@ -26,6 +26,22 @@ export default class SnippetCommandsPlugin extends Plugin {
           customCss.setCssEnabledStatus(snippet, !customCss.enabledSnippets.has(snippet));
         }
       });
+
+      this.addCommand({
+        id: `snippet-command-activate-${snippet}`,
+        name: `Activate ${snippet}`,
+        callback: () => {
+          customCss.setCssEnabledStatus(snippet, true);
+        }
+      });
+
+      this.addCommand({
+        id: `snippet-command-deactivate-${snippet}`,
+        name: `Deactivate ${snippet}`,
+        callback: () => {
+          customCss.setCssEnabledStatus(snippet, false);
+        }
+      });
     });
     this.addCommand({
       id: `snippet-command-reload-all-snippets`,
